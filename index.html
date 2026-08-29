@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuentros y Citas PRO - Contactos y Chat en Vivo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col justify-between">
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40 px-4 py-3 flex justify-between items-center shadow-lg">
+    <div class="flex items-center gap-2">
+      <h1 class="text-2xl font-black bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 bg-clip-text text-transparent">
+        Encuentros y Citas<span class="text-xs text-rose-400 font-semibold uppercase tracking-widest ml-1">PRO</span>
+      </h1>
+    </div>
+    
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button onclick="toggleCreateProfileModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-full flex items-center gap-2 transition">
+        <i class="fa-solid fa-plus text-rose-500"></i>
+        <span>Crear Perfil</span>
+      </button>
+      <button onclick="toggleVipModal()" class="bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-slate-950 font-bold text-xs sm:text-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-lg transition transform active:scale-95">
+        <i class="fa-solid fa-crown"></i>
+        <span>Pase VIP ($5.000/mes)</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- FILTROS -->
+  <section class="max-w-7xl mx-auto px-4 pt-6 pb-2 w-full">
+    <div class="flex items-center justify-between gap-4 border-b border-slate-800/80 pb-4 overflow-x-auto no-scrollbar">
+      <div class="flex gap-2">
+        <button class="bg-rose-600 text-white font-medium px-4 py-1.5 rounded-full text-sm whitespace-nowrap shadow-md">
+          🔥 Todos los perfiles
+        </button>
+        <button class="bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 px-4 py-1.5 rounded-full text-sm whitespace-nowrap hover:bg-slate-800 transition">
+          📍 Cerca de mí
+        </button>
+        <button class="bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 px-4 py-1.5 rounded-full text-sm whitespace-nowrap hover:bg-slate-800 transition">
+          ✨ Verificados
+        </button>
+      </div>
+      <span id="userStatusBadge" class="text-xs px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-amber-400 font-medium">
+        Plan: <span class="font-bold">GRATUITO (3 msjs rest.)</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- REJILLA DE PERFILES -->
+  <main id="profilesGrid" class="max-w-7xl mx-auto px-4 py-6 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-grow">
+    
+    <!-- Perfil 1 -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl overflow-hidden group hover:border-rose-500/50 transition duration-300 flex flex-col justify-between shadow-xl">
+      <div class="relative h-80 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" 
+             alt="Sofia" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute top-3 left-3 bg-slate-950/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2 border border-white/10 text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Online</span>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-white flex items-center gap-1.5">
+              Sofia, 24 <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i>
+            </h2>
+            <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 2 km</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-2 line-clamp-2">Hola! Buscando tomar un café y pasar un buen rato. ¿Hablamos?</p>
+        </div>
+      </div>
+      
+      <div class="p-3 bg-slate-900 border-t border-slate-800/60">
+        <p class="text-[11px] text-slate-400 font-semibold mb-2 flex items-center justify-between">
+          <span>Fotos privadas (3)</span>
+          <i class="fa-solid fa-lock text-amber-400 text-xs"></i>
+        </p>
+        <div class="grid grid-cols-3 gap-1.5">
+          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
+            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
+          </div>
+          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
+            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
+          </div>
+          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
+            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3 pt-0 flex gap-2 bg-slate-900">
+        <button onclick="openChat('Sofia')" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-medium py-2.5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-md">
+          <i class="fa-regular fa-paper-plane"></i> Chatear
+        </button>
+      </div>
+    </div>
+
+    <!-- Perfil 2 -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl overflow-hidden group hover:border-rose-500/50 transition duration-300 flex flex-col justify-between shadow-xl">
+      <div class="relative h-80 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" 
+             alt="Camila" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        <div class="absolute top-3 left-3 bg-slate-950/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2 border border-white/10 text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Online</span>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-bold text-white flex items-center gap-1.5">
+              Camila, 22 <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i>
+            </h2>
+            <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 4 km</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-2 line-clamp-2">Fan de las salidas nocturnas y conocer gente divertida.</p>
+        </div>
+      </div>
+
+      <div class="p-3 bg-slate-900 border-t border-slate-800/60">
+        <p class="text-[11px] text-slate-400 font-semibold mb-2 flex items-center justify-between">
+          <span>Fotos privadas (2)</span>
+          <i class="fa-solid fa-lock text-amber-400 text-xs"></i>
+        </p>
+        <div class="grid grid-cols-3 gap-1.5">
+          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
+            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
+          </div>
+          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
+            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3 pt-0 flex gap-2 bg-slate-900">
+        <button onclick="openChat('Camila')" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-medium py-2.5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-md">
+          <i class="fa-regular fa-paper-plane"></i> Chatear
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL: CREAR PERFIL Y SUBIR FOTOS -->
+  <div id="createProfileModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative">
+      <button onclick="toggleCreateProfileModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+
+      <h3 class="text-2xl font-bold text-white mb-1">Crear tu Perfil</h3>
+      <p class="text-xs text-slate-400 mb-4">Sube tus fotos y comienza a recibir mensajes hoy mismo.</p>
+
+      <form id="profileForm" onsubmit="handleCreateProfile(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Nombre y Edad</label>
+          <div class="grid grid-cols-3 gap-2">
+            <input type="text" id="profName" placeholder="Tu Nombre" required class="col-span-2 bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500">
+            <input type="number" id="profAge" placeholder="Edad" min="18" max="99" required class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Ubicación y Descripción</label>
+          <input type="text" id="profLoc" placeholder="Ej: Buenos Aires (a 3 km)" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500 mb-2">
+          <textarea id="profBio" rows="2" placeholder="Escribe un breve texto sobre ti..." required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Subir Foto Principal</label>
+          <input type="file" id="profPhoto" accept="image/*" required onchange="previewImage(event)" class="w-full text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-rose-600 file:text-white hover:file:bg-rose-500 cursor-pointer">
+          <div id="imagePreviewContainer" class="mt-2 hidden">
+            <img id="imagePreview" src="" class="h-24 w-24 object-cover rounded-2xl border border-slate-700">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 rounded-2xl shadow-lg transition mt-2 text-sm">
+          Publicar mi Perfil
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: PASE VIP / MERCADO PAGO -->
+  <div id="vipModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-3xl p-6 shadow-2xl relative text-center">
+      <button onclick="toggleVipModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+
+      <div class="w-16 h-16 bg-gradient-to-tr from-amber-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-950 text-2xl shadow-lg">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+
+      <h3 class="text-2xl font-bold text-white">Suscripción VIP</h3>
+      <p class="text-xs text-slate-400 mt-1">Desbloquea todo el contenido exclusivo por 30 días.</p>
+
+      <div class="my-6 p-4 bg-slate-950 rounded-2xl border border-slate-800">
+        <span class="text-3xl font-black text-emerald-400">$5.000 <span class="text-xs font-normal text-slate-400">ARS / mes</span></span>
+        <ul class="text-xs text-slate-300 text-left mt-4 space-y-2.5">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Mensajes e interacción <strong>ilimitada</strong>.</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Acceso total a <strong>fotos privadas/secundarias</strong>.</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Renovación automática mensual sin permanencia.</li>
+        </ul>
+      </div>
+
+      <a href="https://www.mercadopago.com.ar" target="_blank" onclick="activateVipSimulated()" class="w-full block bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3.5 rounded-2xl shadow-lg transition flex items-center justify-center gap-2">
+        <i class="fa-solid fa-credit-card"></i> Pagar con Mercado Pago
+      </a>
+      <p class="text-[10px] text-slate-500 mt-3">Suscripción renovable cada mes. Cancela cuando quieras.</p>
+    </div>
+  </div>
+
+  <!-- CHAT FLOTANTE -->
+  <div id="chatBox" class="fixed bottom-4 right-4 w-80 sm:w-96 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-50 hidden flex-col overflow-hidden">
+    <div class="p-3 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+        <span id="chatUser" class="font-bold text-sm text-white">Usuario</span>
+      </div>
+      <button onclick="closeChat()" class="text-slate-400 hover:text-white text-sm">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div id="chatMessages" class="p-3 h-64 overflow-y-auto text-xs space-y-2 flex flex-col">
+      <div class="bg-slate-800 p-2.5 rounded-2xl max-w-[80%] self-start text-slate-200">
+        ¡Hola! 👋 ¿Cómo estás?
+      </div>
+    </div>
+
+    <div class="p-2 bg-slate-950 border-t border-slate-800 flex gap-2">
+      <input type="text" id="chatInput" placeholder="Escribe un mensaje..." class="flex-1 bg-slate-900 border border-slate-800 text-xs text-white rounded-xl px-3 py-2 focus:outline-none focus:border-rose-500">
+      <button onclick="sendMessage()" class="bg-rose-600 hover:bg-rose-500 text-white px-3 py-2 rounded-xl text-xs transition">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 bg-slate-950 py-6 px-4 text-center text-xs text-slate-500 mt-8">
+    <p>© 2026 Encuentros y Citas PRO. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- LÓGICA INTERACTIVA -->
+  <script>
+    let isVip = false;
+    let messageCount = 0;
+    const MAX_FREE_MESSAGES = 3;
+    let uploadedPhotoData = null;
+
+    function toggleVipModal() {
+      const modal = document.getElementById('vipModal');
+      modal.classList.toggle('hidden');
+    }
+
+    function toggleCreateProfileModal() {
+      const modal = document.getElementById('createProfileModal');
+      modal.classList.toggle('hidden');
+    }
+
+    function viewPhoto(isPublic) {
+      if (!isVip && !isPublic) {
+        toggleVipModal();
+      }
+    }
+
+    function openChat(userName) {
+      document.getElementById('chatUser').innerText = userName;
+      document.getElementById('chatBox').classList.remove('hidden');
+      document.getElementById('chatBox').classList.add('flex');
+    }
+
+    function closeChat() {
+      document.getElementById('chatBox').classList.add('hidden');
+      document.getElementById('chatBox').classList.remove('flex');
+    }
+
+    function sendMessage() {
+      if (!isVip && messageCount >= MAX_FREE_MESSAGES) {
+        toggleVipModal();
+        return;
+      }
+
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (text !== "") {
+        const chatMessages = document.getElementById('chatMessages');
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'bg-rose-600 p-2.5 rounded-2xl max-w-[80%] self-end text-white text-right';
+        msgDiv.innerText = text;
+        chatMessages.appendChild(msgDiv);
+        input.value = "";
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        messageCount++;
+        updateBadge();
+      }
+    }
+
+    function updateBadge() {
+      const badge = document.getElementById('userStatusBadge');
+      if (isVip) {
+        badge.innerHTML = 'Plan: <span class="text-emerald-400 font-bold">VIP ILIMITADO</span>';
+      } else {
+        const remaining = Math.max(0, MAX_FREE_MESSAGES - messageCount);
+        badge.innerHTML = `Plan: <span class="font-bold">GRATUITO (${remaining} msjs rest.)</span>`;
+      }
+    }
+
+    function previewImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          uploadedPhotoData = e.target.result;
+          document.getElementById('imagePreview').src = uploadedPhotoData;
+          document.getElementById('imagePreviewContainer').classList.remove('hidden');
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function handleCreateProfile(event) {
+      event.preventDefault();
+      const name = document.getElementById('profName').value;
+      const age = document.getElementById('profAge').value;
+      const loc = document.getElementById('profLoc').value;
+      const bio = document.getElementById('profBio').value;
+
+      const newCard = document.createElement('div');
+      newCard.className = "bg-slate-900/90 border border-rose-500/50 rounded-3xl overflow-hidden group hover:border-rose-500 transition duration-300 flex flex-col justify-between shadow-xl";
+      newCard.innerHTML = `
+        <div class="relative h-80 overflow-hidden">
+          <img src="${uploadedPhotoData || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600'}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div class="absolute top-3 left-3 bg-slate-950/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2 border border-white/10 text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Nuevo</span>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-bold text-white flex items-center gap-1.5">${name}, ${age}</h2>
+              <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 ${loc}</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2 line-clamp-2">${bio}</p>
+          </div>
+        </div>
+        <div class="p-3 bg-slate-900 border-t border-slate-800/60">
+          <p class="text-[11px] text-slate-400 font-semibold mb-2 flex items-center justify-between">
+            <span>Fotos privadas (0)</span>
+          </p>
+        </div>
+        <div class="p-3 pt-0 flex gap-2 bg-slate-900">
+          <button onclick="openChat('${name}')" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-medium py-2.5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-md">
+            <i class="fa-regular fa-paper-plane"></i> Chatear
+          </button>
+        </div>
+      `;
+
+      const grid = document.getElementById('profilesGrid');
+      grid.insertBefore(newCard, grid.firstChild);
+
+      toggleCreateProfileModal();
+      document.getElementById('profileForm').reset();
+      document.getElementById('imagePreviewContainer').classList.add('hidden');
+    }
+
+    function activateVipSimulated() {
+      isVip = true;
+      updateBadge();
+    }
+  </script>
+</body>
+</html>
+
