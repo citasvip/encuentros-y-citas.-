@@ -34,13 +34,16 @@
     <div class="flex items-center justify-between gap-4 border-b border-slate-800/80 pb-4 overflow-x-auto no-scrollbar">
       <div class="flex gap-2">
         <button class="bg-rose-600 text-white font-medium px-4 py-1.5 rounded-full text-sm whitespace-nowrap shadow-md">
-          🔥 Todos los perfiles
+          🔥 Todos
         </button>
         <button class="bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 px-4 py-1.5 rounded-full text-sm whitespace-nowrap hover:bg-slate-800 transition">
-          📍 Cerca de mí
+          👩 Mujeres
         </button>
         <button class="bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 px-4 py-1.5 rounded-full text-sm whitespace-nowrap hover:bg-slate-800 transition">
-          ✨ Verificados
+          👨 Hombres
+        </button>
+        <button class="bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800 px-4 py-1.5 rounded-full text-sm whitespace-nowrap hover:bg-slate-800 transition">
+          ✨ Trans
         </button>
       </div>
       <span id="userStatusBadge" class="text-xs px-3 py-1 bg-slate-900 border border-slate-800 rounded-full text-amber-400 font-medium">
@@ -66,7 +69,11 @@
             <h2 class="text-xl font-bold text-white flex items-center gap-1.5">
               Sofia, 24 <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i>
             </h2>
-            <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 2 km</span>
+            <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 Buenos Aires, CABA</span>
+          </div>
+          <div class="mt-1 flex gap-1.5 flex-wrap">
+            <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-md font-medium">Busca: Hombres</span>
+            <span class="text-[10px] bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded-md">Soy: Mujer</span>
           </div>
           <p class="text-xs text-slate-300 mt-2 line-clamp-2">Hola! Buscando tomar un café y pasar un buen rato. ¿Hablamos?</p>
         </div>
@@ -100,61 +107,17 @@
       </div>
     </div>
 
-    <!-- Perfil 2 -->
-    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl overflow-hidden group hover:border-rose-500/50 transition duration-300 flex flex-col justify-between shadow-xl">
-      <div class="relative h-80 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" 
-             alt="Camila" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute top-3 left-3 bg-slate-950/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2 border border-white/10 text-emerald-400">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Online</span>
-        </div>
-        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-4">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xl font-bold text-white flex items-center gap-1.5">
-              Camila, 22 <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i>
-            </h2>
-            <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 4 km</span>
-          </div>
-          <p class="text-xs text-slate-300 mt-2 line-clamp-2">Fan de las salidas nocturnas y conocer gente divertida.</p>
-        </div>
-      </div>
-
-      <div class="p-3 bg-slate-900 border-t border-slate-800/60">
-        <p class="text-[11px] text-slate-400 font-semibold mb-2 flex items-center justify-between">
-          <span>Fotos privadas (2)</span>
-          <i class="fa-solid fa-lock text-amber-400 text-xs"></i>
-        </p>
-        <div class="grid grid-cols-3 gap-1.5">
-          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
-            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
-          </div>
-          <div class="relative h-16 rounded-xl overflow-hidden cursor-pointer" onclick="viewPhoto(false)">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover blur-sm">
-            <div class="absolute inset-0 bg-slate-950/60 flex items-center justify-center text-amber-400 text-xs font-bold">VIP</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-3 pt-0 flex gap-2 bg-slate-900">
-        <button onclick="openChat('Camila')" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-medium py-2.5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-md">
-          <i class="fa-regular fa-paper-plane"></i> Chatear
-        </button>
-      </div>
-    </div>
-
   </main>
 
   <!-- MODAL: CREAR PERFIL Y SUBIR FOTOS -->
   <div id="createProfileModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-3xl p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <button onclick="toggleCreateProfileModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
 
       <h3 class="text-2xl font-bold text-white mb-1">Crear tu Perfil</h3>
-      <p class="text-xs text-slate-400 mb-4">Sube tus fotos y comienza a recibir mensajes hoy mismo.</p>
+      <p class="text-xs text-slate-400 mb-4">Completa tus datos para empezar a recibir mensajes.</p>
 
       <form id="profileForm" onsubmit="handleCreateProfile(event)" class="space-y-4 text-xs">
         <div>
@@ -166,8 +129,57 @@
         </div>
 
         <div>
-          <label class="block text-slate-300 font-medium mb-1">Ubicación y Descripción</label>
-          <input type="text" id="profLoc" placeholder="Ej: Buenos Aires (a 3 km)" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500 mb-2">
+          <label class="block text-slate-300 font-medium mb-1">Identidad de Género e Interés</label>
+          <div class="grid grid-cols-2 gap-2">
+            <select id="profGender" required class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500">
+              <option value="" disabled selected>Soy...</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Hombre">Hombre</option>
+              <option value="Trans">Trans</option>
+            </select>
+
+            <select id="profInterest" required class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500">
+              <option value="" disabled selected>Busco...</option>
+              <option value="Hombres">Hombres</option>
+              <option value="Mujeres">Mujeres</option>
+              <option value="Trans">Trans</option>
+              <option value="Todos">Todos</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-medium mb-1">Ubicación</label>
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <select id="profProvince" required class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500">
+              <option value="" disabled selected>Provincia...</option>
+              <option value="Buenos Aires">Buenos Aires</option>
+              <option value="CABA">CABA</option>
+              <option value="Catamarca">Catamarca</option>
+              <option value="Chaco">Chaco</option>
+              <option value="Chubut">Chubut</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="Corrientes">Corrientes</option>
+              <option value="Entre Ríos">Entre Ríos</option>
+              <option value="Formosa">Formosa</option>
+              <option value="Jujuy">Jujuy</option>
+              <option value="La Pampa">La Pampa</option>
+              <option value="La Rioja">La Rioja</option>
+              <option value="Mendoza">Mendoza</option>
+              <option value="Misiones">Misiones</option>
+              <option value="Neuquén">Neuquén</option>
+              <option value="Río Negro">Río Negro</option>
+              <option value="Salta">Salta</option>
+              <option value="San Juan">San Juan</option>
+              <option value="San Luis">San Luis</option>
+              <option value="Santa Cruz">Santa Cruz</option>
+              <option value="Santa Fe">Santa Fe</option>
+              <option value="Santiago del Estero">Santiago del Estero</option>
+              <option value="Tierra del Fuego">Tierra del Fuego</option>
+              <option value="Tucumán">Tucumán</option>
+            </select>
+            <input type="text" id="profLoc" placeholder="Localidad / Ciudad" required class="bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500">
+          </div>
           <textarea id="profBio" rows="2" placeholder="Escribe un breve texto sobre ti..." required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-rose-500"></textarea>
         </div>
 
@@ -210,7 +222,6 @@
       </div>
 
       <a href="https://mpago.la/16Bbz7g" target="_blank" onclick="activateVipSimulated()" class="w-full block bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-3.5 rounded-2xl shadow-lg transition flex items-center justify-center gap-2">
-
         <i class="fa-solid fa-credit-card"></i> Pagar con Mercado Pago
       </a>
       <p class="text-[10px] text-slate-500 mt-3">Suscripción renovable cada mes. Cancela cuando quieras.</p>
@@ -331,6 +342,9 @@
       event.preventDefault();
       const name = document.getElementById('profName').value;
       const age = document.getElementById('profAge').value;
+      const gender = document.getElementById('profGender').value;
+      const interest = document.getElementById('profInterest').value;
+      const province = document.getElementById('profProvince').value;
       const loc = document.getElementById('profLoc').value;
       const bio = document.getElementById('profBio').value;
 
@@ -346,7 +360,11 @@
           <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent p-4">
             <div class="flex items-center justify-between">
               <h2 class="text-xl font-bold text-white flex items-center gap-1.5">${name}, ${age}</h2>
-              <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 ${loc}</span>
+              <span class="text-xs bg-slate-800/90 px-2.5 py-1 rounded-full text-slate-300 border border-slate-700">📍 ${province}, ${loc}</span>
+            </div>
+            <div class="mt-1 flex gap-1.5 flex-wrap">
+              <span class="text-[10px] bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded-md font-medium">Busca: ${interest}</span>
+              <span class="text-[10px] bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded-md">Soy: ${gender}</span>
             </div>
             <p class="text-xs text-slate-300 mt-2 line-clamp-2">${bio}</p>
           </div>
@@ -378,4 +396,3 @@
   </script>
 </body>
 </html>
-
